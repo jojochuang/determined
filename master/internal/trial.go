@@ -1049,7 +1049,7 @@ func (t *trial) terminated(ctx *actor.Context) {
 
 	t.runID++
 	t.task = nil
-	ctx.Tell(t.rp, scheduler.ResourcesReleased{Handler: ctx.Self()})
+	ctx.Tell(t.rp, scheduler.ResourcesReleased{TaskActor: ctx.Self()})
 	t.pendingGracefulTermination = false
 	t.terminationSent = false
 	t.terminatedContainers = nil
